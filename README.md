@@ -19,3 +19,18 @@ This is a customized deployment of OpenCATS ATS using Docker for easy local deve
 ```bash
 docker-compose up -d
 Access the app at: http://localhost:8080
+📂 Folder Structure
+docker/: Docker volumes and config
+
+attachments/, uploads/: Candidate resume uploads
+
+api_add_candidate.php: Custom API endpoint (in progress)
+
+.gitignore: Ensures sensitive data isn’t tracked
+
+🚀 Custom Features (WIP)
+Resume upload and parsing
+
+JSON API to create candidates
+
+Future: webhook and email integration
