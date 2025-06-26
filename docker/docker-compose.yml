@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  web:
+    image: php:7.4-apache
+    container_name: opencats-web
+    working_dir: /var/www/html
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/var/www/html
+    depends_on:
+      - db
+    restart: always
+    command: bash -c "apt-get update \
+      && apt-get install -y libpng-dev libjpeg-dev libldap2-dev libzip-dev libxml2-dev \
+         poppler-utils unrtf antiword html2text \
+      && docker-php-ext-configure gd --with-jpeg \
+      && docker-php-ext-install gd mysqli ldap soap zip \
+      && apache2-foreground"
+
+  db:
+    image: mysql:5.7
+    container_name: opencats-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: opencats
+      MYSQL_USER: opencats
+      MYSQL_PASSWORD: opencats
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:

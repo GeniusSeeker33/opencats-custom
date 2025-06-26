@@ -1,0 +1,38 @@
+# Ignore IDE/editor metadata
+.buildpath
+.project
+.settings/
+.vscode/
+.idea/
+
+# Ignore OS-level files
+.DS_Store
+Thumbs.db
+
+# Docker-related persistent data (databases, caches, etc.)
+docker/data/
+docker/persist/
+mysql/
+logs/
+*.log
+
+# OpenCATS runtime and uploaded content
+attachments/
+resumes/
+uploads/
+temp/
+cache/
+templates_c/
+
+# Sensitive config files (don't upload real credentials!)
+config.php
+.env
+db_config.php
+
+# Composer dependencies (can regenerate from composer.lock)
+vendor/
+
+# Patch files and rejects
+*.diff
+*.rej
+
